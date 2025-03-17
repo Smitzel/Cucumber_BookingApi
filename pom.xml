@@ -15,7 +15,7 @@
         <cucumber-extentsreport.version>1.14.0</cucumber-extentsreport.version>
         <cucumber.version>7.21.1</cucumber.version>
         <datafaker.version>2.4.2</datafaker.version>
-        <junit.vintage.version>5.12.0</junit.vintage.version>
+        <junit.vintage.version>5.12.1</junit.vintage.version>
         <rest-assured.version>5.5.1</rest-assured.version>
         <rest-assured-schema.version>5.5.1</rest-assured-schema.version>
         <wiremock-jre8.version>2.35.2</wiremock-jre8.version>
