@@ -15,6 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cucumber.version>7.22.0</cucumber.version>
         <datafaker.version>2.4.3</datafaker.version>
+        <extentreports-cucumber7-adapter.version>1.14.0</extentreports-cucumber7-adapter.version>
         <junit.jupiter.version>5.10.1</junit.jupiter.version>
         <rest-assured.version>5.5.1</rest-assured.version>
         <rest-assured-schema.version>5.5.1</rest-assured-schema.version>
@@ -94,6 +95,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- extentreports -->
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>${extentreports-cucumber7-adapter.version}</version>
+        </dependency>
+
         <!-- SLF4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -109,25 +117,27 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>9</source>
-                    <target>9</target>
+                    <target>9</target><compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.1.2</version>
                 <configuration>
                     <includes>
-                        <include>**/RunCucumberTest.java</include>
+                        <include>**/CucumberTestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
