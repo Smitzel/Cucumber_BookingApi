@@ -38,6 +38,8 @@ JUnit - Test runner
 
 ✅ Provides easy setup and execution with Maven
 
+✅ Extent reporting
+
 ✅ TODO: Parallel test execution
 
 ## 🤝 Contributing
