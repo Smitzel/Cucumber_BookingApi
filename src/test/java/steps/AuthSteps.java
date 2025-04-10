@@ -1,6 +1,5 @@
 package steps;
 
-import hooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.restassured.response.Response;
 import utils.TestVariables;
@@ -9,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import static steps.Hooks.bookingApiSpec;
 import static utils.TestVariableManager.SetVariable;
 
 public class AuthSteps {
@@ -36,7 +36,7 @@ public class AuthSteps {
         String password = properties.getProperty("password");
         String jsonBody = String.format("{\"username\": \"%s\", \"password\": \"%s\"}", username, password);
 
-        Response response = Hooks.bookingApiSpec
+        Response response = bookingApiSpec
                 .contentType("application/json")
                 .body(jsonBody)
                 .post("auth");

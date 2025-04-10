@@ -1,4 +1,4 @@
-package hooks;
+package steps;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import io.cucumber.java.After;

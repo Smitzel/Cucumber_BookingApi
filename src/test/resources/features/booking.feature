@@ -81,7 +81,7 @@ Feature: Airline tests
 
 
     @booking
-  Scenario: 07. As a customer I want to create, read, update and delete a booking
+  Scenario: 08. As a customer I want to create, read, update and delete a booking
 
       Given I get a valid authentication token
 
@@ -96,7 +96,7 @@ Feature: Airline tests
       Then the booking should no longer be retrievable
 
   @booking
-  Scenario: 08. Attempt to retrieve a non-existent booking
+  Scenario: 09. Attempt to retrieve a non-existent booking
 
     Given I have these variables
       | INVALIDBOOKINGID | 999999999 |
@@ -104,7 +104,7 @@ Feature: Airline tests
     Then no booking exists with invalid ID
 
   @booking
-  Scenario: 09. Attempt to authenticate with invalid credentials
+  Scenario: 10. Attempt to authenticate with invalid credentials
     Given I have invalid token
 
     When I add a booking to the api

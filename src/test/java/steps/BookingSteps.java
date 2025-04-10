@@ -1,6 +1,5 @@
 package steps;
 
-import hooks.Hooks;
 import pojo.Booking;
 import pojo.BookingDates;
 import io.cucumber.java.en.*;
@@ -13,7 +12,8 @@ import java.util.Map;
 import java.util.Random;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.TestVariableManager.*;
 import static utils.TestVariableManager.SetVariable;
 import static utils.TestVariables.*;
