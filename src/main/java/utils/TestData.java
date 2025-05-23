@@ -29,14 +29,14 @@ public class TestData {
     }
 
     public static String getCheckInDate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        int randomDays = faker.number().numberBetween(1, 25);
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final int randomDays = faker.number().numberBetween(1, 25);
         return LocalDate.now().minusDays(randomDays).format(formatter);
     }
 
     public static String getCheckOutDate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        int randomDays = faker.number().numberBetween(1, 51);
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final int randomDays = faker.number().numberBetween(1, 51);
         return LocalDate.now().plusDays(randomDays).format(formatter);
     }
 
