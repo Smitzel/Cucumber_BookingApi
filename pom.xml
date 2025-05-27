@@ -19,17 +19,27 @@
         <junit.jupiter.version>5.12.2</junit.jupiter.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <rest-assured.version>5.5.5</rest-assured.version>
-        <rest-assured-schema.version>5.5.5</rest-assured-schema.version>
         <wiremock-jre8.version>2.35.2</wiremock-jre8.version>
         <slf4j.version>2.0.17</slf4j.version>
+        <logback.version>1.5.18</logback.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- JUnit BOM -->
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
                 <version>${junit.jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Rest Assured BOM -->
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured-bom</artifactId>
+                <version>${rest-assured.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -50,7 +60,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- JUnit 5 (version via BOM) -->
+        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -67,28 +77,26 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Faker Testdata dependency -->
+        <!-- Faker Testdata -->
         <dependency>
             <groupId>net.datafaker</groupId>
             <artifactId>datafaker</artifactId>
             <version>${datafaker.version}</version>
         </dependency>
 
-        <!-- Rest Assured dependency -->
+        <!-- Rest Assured dependencies -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
-            <version>${rest-assured-schema.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- WireMock dependency -->
+        <!-- WireMock -->
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-jre8</artifactId>
@@ -96,28 +104,29 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- extentreports -->
+        <!-- ExtentReports -->
         <dependency>
             <groupId>tech.grasshopper</groupId>
             <artifactId>extentreports-cucumber7-adapter</artifactId>
             <version>${extentreports-cucumber7-adapter.version}</version>
         </dependency>
 
-        <!-- SLF4J -->
+        <!-- SLF4J-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
+            <!-- Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -128,7 +137,8 @@
                     </includes>
                 </configuration>
             </plugin>
-            <!-- Checkstyle plugin -->
+
+            <!-- Checkstyle Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -143,9 +153,22 @@
                 </executions>
                 <configuration>
                     <configLocation>config/checkstyle/checkstyle.xml</configLocation>
-                    <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
+                    <properties>
+                        <property>
+                            <name>charset</name>
+                            <value>${project.build.sourceEncoding}</value>
+                        </property>
+                    </properties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
                 </configuration>
             </plugin>
         </plugins>
