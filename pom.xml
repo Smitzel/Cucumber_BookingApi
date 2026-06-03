@@ -21,7 +21,7 @@
         <rest-assured.version>6.0.0</rest-assured.version>
         <wiremock-jre8.version>3.0.1</wiremock-jre8.version>
         <slf4j.version>2.0.18</slf4j.version>
-        <logback.version>1.5.32</logback.version>
+        <logback.version>1.5.34</logback.version>
     </properties>
 
     <dependencyManagement>
