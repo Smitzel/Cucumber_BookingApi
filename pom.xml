@@ -60,6 +60,14 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Required by the Cucumber timeline plugin -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>2.15.2</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -154,14 +162,7 @@
                 <configuration>
                     <configLocation>config/checkstyle/checkstyle.xml</configLocation>
                     <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                    <properties>
-                        <property>
-                            <name>charset</name>
-                            <value>${project.build.sourceEncoding}</value>
-                        </property>
-                    </properties>
-                </configuration>
+                    <failsOnError>true</failsOnError>                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
